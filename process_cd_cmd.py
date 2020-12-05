@@ -1,6 +1,6 @@
-import sys,os
+import os
 
-def process_cd_cmd(cmd,cwd,env)
+def process_cd_cmd(cmd,cwd,env):
     res=''
     rc=0
     if len(cmd)>=2:

@@ -14,7 +14,7 @@ def process_spawn_cmd(cmd,cwd,env):
         args['env']=env
         spawn_daemon(internal_cmd_spawn,args)
         res='Daemon started.'
-    elif:
+    else:
         rc=1
         res='spawn: Invalid number of arguments.'
     return rc,res,cwd,env

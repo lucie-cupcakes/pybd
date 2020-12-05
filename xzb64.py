@@ -12,6 +12,7 @@ def xzb64_encode(str_in):
         if i is not None:
             res+=i.decode().strip()
     return res.replace('\n','')[len(xz_header):]
+
 def xzb64_decode(str_in):
     if str_in is None or str_in == '':
         return ''
