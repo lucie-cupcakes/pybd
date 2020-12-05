@@ -17,4 +17,8 @@ import os
 from server_main import server_main
 
 if __name__ == '__main__':
+    print('pydb - Python Backdoor Daemon.')
+    print('Forever beta software.')
+    print('This software is Free software - released under the GPLv3 License')
+    print('Read the LICENSE file. Or go visit https://www.gnu.org/licenses/gpl-3.0.html')
     server_main(host=os.environ['host'],port=int(os.environ['port']))
