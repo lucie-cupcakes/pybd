@@ -15,7 +15,7 @@ import sys, os, socket
 from _thread import *
 import threading
 from handle_client import handle_client
-def server_main(host='0.0.0.0',port=6969,max_cli=128):
+def server_main(host='0.0.0.0',port=6969,max_cli=128,buffsize=4096,encoding='utf-8'):
     main_loop_going=True
     srv=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     tlock=threading.Lock()
@@ -25,7 +25,7 @@ def server_main(host='0.0.0.0',port=6969,max_cli=128):
     while main_loop_going:
         try:
             cli,addr=srv.accept()
-            start_new_thread(handle_client, (cli, addr, tlock))
+            start_new_thread(handle_client, (cli,addr,tlock,buffsize,encoding))
         except KeyboardInterrupt:
             print('Leaving..')
             main_loop_going=False

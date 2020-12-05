@@ -14,21 +14,26 @@ along with pybd; see the file LICENSE.  If not see <http://www.gnu.org/licenses/
 import sys, os, socket
 from xzb64 import xzb64_encode, xzb64_decode
 
-def client_main(rhost,rport=6969):
+def client_main(rhost,rport=6969,buffsize=4096,encoding='utf-8'):
     read_input=True
-    buff_size=1024
-    srv_rc=-1
-    srv_cwd=''
+    first_cmd=True
+    cmd=''
+    sv_rc=-1
+    sv_cwd=''
     s=socket.socket()
     s.connect((rhost, rport))
     while read_input:
-        prompt=f'{srv_cwd}\n[{srv_rc}] %'
-        print(prompt, end=' ')
-        cmd=str(input()).strip()
-        if cmd.lower()=='':
-            cmd='sv_ping'
-        s.send(xzb64_encode(cmd).encode('utf-8'))
-        res=s.recv(buff_size).decode('utf-8').split('%') #rc%cmd_out_xzb64%cwd
+        prompt=f'{sv_cwd}\n[{sv_rc}] %'
+        if first_cmd==False:            
+            print(prompt, end=' ')
+            cmd=str(input()).strip()
+            if cmd.lower()=='':
+                cmd='sv_ping'
+        else:
+            cmd='sv_greet'
+            first_cmd=False
+        s.send(xzb64_encode(cmd).encode(encoding))
+        res=s.recv(buffsize).decode(encoding).split('%') #rc%cmd_out_xzb64%cwd
         if len(res)!=3:
             print('Malformed response')
             exit()

@@ -35,5 +35,5 @@ def process_env_cmd(cmd,cwd,env):
         res=env[k]
     else:
         rc=1
-        res='env: Missing argument or unrecognized commnad.\nuse env help, for usage.'
+        res='env: Missing argument or unrecognized command.\nFor usage: use env help.'
     return rc,res,cwd,env
