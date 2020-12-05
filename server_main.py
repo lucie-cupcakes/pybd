@@ -3,14 +3,12 @@ from _thread import *
 import threading
 from handle_client import handle_client
 
-def server_main():
+def server_main(host,port):
     tlock=threading.Lock()
     srv=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    srv_host=os.environ['host']
-    srv_port=int(os.environ['port'])
     srv_max_cli=128
     main_loop_going=True
-    srv.bind( (srv_host, srv_port) )
+    srv.bind( (host, port) )
     srv.listen(srv_max_cli)
     print(f"Listening as {srv_host}:{srv_port} ...")
     while main_loop_going:
