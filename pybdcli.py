@@ -37,10 +37,9 @@ def client_main(rhost,rport=6969,buffsize=4096,encoding='utf-8'):
         if len(res)!=3:
             print('Malformed response')
             exit()
-        srv_rc=res[0]
-        cmd_out=xzb64_decode(res[1])
-        srv_cwd=res[2]
-        print(cmd_out)
+        sv_rc=res[0]
+        sv_cwd=res[2]
+        print(xzb64_decode(res[1]))
         if cmd.lower()=='exit':
             read_input=False
     s.close()
