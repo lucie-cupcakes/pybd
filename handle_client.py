@@ -1,5 +1,5 @@
-"""Copyright (C) 2020 Lucie Cupcakes <lucie_linux [at] protonmail.com>
-This file is part of pybd <https://gitlab.com/lucie_cupcakes/pybd>.
+"""Copyright (C) 2021 Lucie Cupcakes <lucie_linux [at] protonmail.com>
+This file is part of pybd <https://github.com/lucie-cupcakes/pybd>.
 pybd is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free
 Software Foundation; either version 3, or (at your option) any later
